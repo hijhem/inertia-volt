@@ -1,0 +1,14 @@
+{
+  "name": "inertia-inline",
+  "private": true,
+  "workspaces": [
+    "./packages/*",
+    "./playgrounds/*"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,33 @@
+{
+    "name": "inertia-inline/laravel-plugin",
+    "license": "MIT",
+    "version": "0.1",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "InertiaInline\\Laravel\\": "src/"
+        },
+        "files": [
+            "./src/actions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Alex Goncharov",
+            "email": "eins.two@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^11.0",
+        "illuminate/routing": "^11.0",
+        "illuminate/http": "^11.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "InertiaInline\\Laravel\\ServiceProvider"
+            ]
+        }
+    }
+}
