@@ -10,7 +10,7 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
-        inertiaVolt({ path: 'resources/js/Pages' }),
+        inertiaVolt({ path: 'resources/js/Pages', extension: 'vue' }),
         vue({
             template: {
                 transformAssetUrls: {

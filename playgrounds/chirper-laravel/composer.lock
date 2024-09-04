@@ -1056,7 +1056,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../packages/laravel-plugin",
-                "reference": "4739fe25a64fc1f55cfa68f96e1431d8a85c9e2e"
+                "reference": "1f283ced4d24a69ea4de5ca9daa01d69801eb2ac"
             },
             "require": {
                 "illuminate/http": "^11.0",
@@ -1076,7 +1076,8 @@
                     "InertiaVolt\\Laravel\\": "src/"
                 },
                 "files": [
-                    "./src/actions.php"
+                    "./src/actions.php",
+                    "./src/helpers.php"
                 ]
             },
             "license": [

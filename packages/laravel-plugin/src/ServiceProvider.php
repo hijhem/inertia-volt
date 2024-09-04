@@ -12,11 +12,32 @@ use InertiaVolt\Laravel\Routing\PendingInertiaPageRegistration;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/inertia-volt.php',
+            'inertia-volt'
+        );
+    }
+
     public function boot(): void
     {
-        Route::macro('inertiaPage', function (string $component) {
+        $this->publishes([
+            __DIR__.'/../config/inertia-volt.php' => config_path('inertia-volt'),
+        ]);
+
+        $pagePath = config('inertia-volt.path');
+        $pageExtension = config('inertia-volt.extension');
+
+        Route::macro('inertiaPage', function (string $component) use ($pagePath, $pageExtension) {
             Context::addHidden('inertia:component', $component);
-            $path = app_path('../resources/js/Pages/' . $component . '.inertia.vue');
+
+            $path = app_path(sprintf(
+                '../%s/%s.inertia.%s',
+                trim($pagePath, '/'),
+                $component,
+                $pageExtension
+            ));
 
             $routeRegistrar = new RouteRegistrar(app('router'));
 
