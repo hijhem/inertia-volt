@@ -1,5 +1,5 @@
 {
-  "name": "inertia-inline",
+  "name": "inertia-volt",
   "private": true,
   "workspaces": [
     "./packages/*",

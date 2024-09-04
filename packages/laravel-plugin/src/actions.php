@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace InertiaInline\Laravel;
+namespace InertiaVolt\Laravel;
 
 use Closure;
 use Illuminate\Http\Request;

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
-import inertiaInline from '@inertia-inline/vite'
+import inertiaVolt from '@inertia-volt/vite'
 
 export default defineConfig({
     plugins: [
@@ -10,7 +10,7 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
-        inertiaInline({ path: 'resources/js/Pages' }),
+        inertiaVolt({ path: 'resources/js/Pages' }),
         vue({
             template: {
                 transformAssetUrls: {

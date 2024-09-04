@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace InertiaInline\Laravel;
+namespace InertiaVolt\Laravel;
 
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Context;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use InertiaInline\Laravel\Routing\PendingInertiaPageRegistration;
+use InertiaVolt\Laravel\Routing\PendingInertiaPageRegistration;
 
 class ServiceProvider extends BaseServiceProvider
 {

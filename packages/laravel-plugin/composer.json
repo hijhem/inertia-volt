@@ -1,12 +1,12 @@
 {
-    "name": "inertia-inline/laravel-plugin",
+    "name": "inertia-volt/laravel-plugin",
     "license": "MIT",
     "version": "0.1",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "InertiaInline\\Laravel\\": "src/"
+            "InertiaVolt\\Laravel\\": "src/"
         },
         "files": [
             "./src/actions.php"
@@ -26,7 +26,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "InertiaInline\\Laravel\\ServiceProvider"
+                "InertiaVolt\\Laravel\\ServiceProvider"
             ]
         }
     }
