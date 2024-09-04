@@ -9,7 +9,8 @@
             "InertiaVolt\\Laravel\\": "src/"
         },
         "files": [
-            "./src/actions.php"
+            "./src/actions.php",
+            "./src/helpers.php"
         ]
     },
     "authors": [
