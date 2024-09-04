@@ -1,5 +1,5 @@
 {
-  "name": "@inertia-inline/vite",
+  "name": "@inertia-volt/vite",
   "module": "index.js",
   "type": "module",
   "devDependencies": {

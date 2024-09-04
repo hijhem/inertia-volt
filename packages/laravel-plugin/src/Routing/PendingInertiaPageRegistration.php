@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace InertiaInline\Laravel\Routing;
+namespace InertiaVolt\Laravel\Routing;
 
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Arr;

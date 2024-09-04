@@ -1,4 +1,4 @@
-# @inertia-inline/vite
+# @inertia-volt/vite
 
 To install dependencies:
 

@@ -3,10 +3,7 @@
 use App\Http\Requests\ChirpStoreRequest;
 use App\Models\Chirp;
 
-use function InertiaInline\Laravel\delete;
-use function InertiaInline\Laravel\post;
-use function InertiaInline\Laravel\put;
-use function InertiaInline\Laravel\render;
+use function InertiaVolt\Laravel\{render,post,put,delete};
 
 render(handler: static fn() => [
     'chirps' => Chirp::with('user:id,name')->latest()->get(),

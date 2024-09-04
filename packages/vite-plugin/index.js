@@ -12,9 +12,9 @@ function stripPhpTags(code) {
  * @param {{ path: string }} config
  * @returns {import('vite').Plugin}
  */
-export default function inertiaInline(config) {
+export default function inertiaVolt(config) {
     return {
-        name: 'inertia-inline',
+        name: 'inertia-volt-transformer',
         transform(src, id) {
             if (id.includes(config.path) && src.includes('<?php')) {
                 console.log(stripPhpTags(src))
