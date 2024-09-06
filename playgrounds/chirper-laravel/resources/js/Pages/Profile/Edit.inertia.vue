@@ -1,3 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Http\Pages\ProfileEditForm;
+
+use function InertiaVolt\Laravel\render;
+
+render(ProfileEditForm::class)->name('edit');
+
+?>
+
+
+
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
