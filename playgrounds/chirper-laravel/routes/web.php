@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use InertiaVolt\Laravel\Facades\InertiaVolt;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -19,11 +20,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    InertiaVolt::page('Chirps/Index')->prefix('chirps')->name('chirps.');
+    InertiaVolt::page('Profile/Edit')->prefix('profile')->name('profile.');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::inertiaPage('Chirps/Index')->prefix('chirps')->name('chirps.')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
