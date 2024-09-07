@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace InertiaVolt\Laravel\Routing;
 
+use Exception;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Arr;
+use InertiaVolt\Laravel\PageContext;
 
 class PendingInertiaPageRegistration
 {
     protected array $attributes = [];
 
-    public function __construct(protected RouteRegistrar $registrar, protected string $component)
-    {
-    }
+    public function __construct(
+        protected PageContext $pageContext,
+        protected RouteRegistrar $registrar,
+        protected string $componentPath,
+    ) {}
 
     public function name(string $name): self
     {
@@ -38,8 +42,6 @@ class PendingInertiaPageRegistration
 
     public function __destruct()
     {
-        $path = $this->component;
-
         if (isset($this->attributes['middleware'])) {
             $this->registrar->middleware($this->attributes['middleware']);
         }
@@ -52,10 +54,21 @@ class PendingInertiaPageRegistration
             $this->registrar->prefix($this->attributes['prefix']);
         }
 
-        $this->registrar->group(static function () use ($path) {
-            ob_start();
-            require $path;
-            ob_end_clean();
+        $this->registrar->group(function () {
+            try {
+                ob_start();
+                require $this->componentPath;
+
+                if (! $this->pageContext->renderTriggered()) {
+                    $component = $this->pageContext->component();
+                    throw new Exception("Component $component can't be rendered. render() function has to be called within the component.");
+                }
+
+            } finally {
+                ob_end_clean();
+
+                $this->pageContext->flush();
+            }
         });
     }
 }
