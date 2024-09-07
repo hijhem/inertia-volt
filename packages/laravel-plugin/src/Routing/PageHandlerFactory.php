@@ -18,7 +18,7 @@ class PageHandlerFactory
     ) {}
 
     /**
-     * @return array<Closure, ReflectionFunctionAbstract>
+     * @return array{Closure,ReflectionFunctionAbstract}
      */
     public function createHandler(Closure|string $handler): array
     {

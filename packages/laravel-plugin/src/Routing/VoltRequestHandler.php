@@ -7,6 +7,7 @@ namespace InertiaVolt\Laravel\Routing;
 use Closure;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class VoltRequestHandler
 {
@@ -14,11 +15,13 @@ class VoltRequestHandler
         private PageHandlerFactory $pageHandlerFactory,
     ) {}
 
-    public function handle(Request $request, string $component, Closure|string $handler)
+    public function handle(Request $request, string $component, Closure|string $handler): Response
     {
         [$handler, $reflectionFunction] = $this->pageHandlerFactory->createHandler($handler);
 
+        /** @var \Illuminate\Routing\Route */
         $route = $request->route();
+
         $parameters = $route->resolveMethodDependencies(
             $route->parametersWithoutNulls(),
             $reflectionFunction,
