@@ -24,7 +24,7 @@ class InertiaVoltManager
         $this->pageExtension = config('inertia-volt.extension');
     }
 
-    public function page(string $component)
+    public function page(string $component): PendingInertiaPageRegistration
     {
         $this->pageContext->setComponent($component);
 

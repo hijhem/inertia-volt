@@ -11,6 +11,9 @@ use InertiaVolt\Laravel\PageContext;
 
 class PendingInertiaPageRegistration
 {
+    /**
+     * @var array{name?: string, prefix?: string, middleware?: string[]|string}
+     */
     protected array $attributes = [];
 
     public function __construct(
@@ -33,6 +36,9 @@ class PendingInertiaPageRegistration
         return $this;
     }
 
+    /**
+     * @param string[]|string $middleware
+     */
     public function middleware(array|string $middleware): self
     {
         $this->attributes['middleware'] = Arr::wrap($middleware);
