@@ -15,8 +15,7 @@ class PageHandlerFactory
 {
     public function __construct(
         private Container $container,
-    ) {  
-    }
+    ) {}
 
     /**
      * @return array<Closure, ReflectionFunctionAbstract>
@@ -26,7 +25,7 @@ class PageHandlerFactory
         if (is_string($handler) && class_exists($handler)) {
             $handler = $this->container->get($handler);
 
-            if (!is_callable($handler)) {
+            if (! is_callable($handler)) {
                 throw new Exception('Handler class should be an invokable class');
             }
 

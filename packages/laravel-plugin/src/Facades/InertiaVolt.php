@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static \InertiaVolt\Laravel\Routing\PendingInertiaPageRegistration page(string $component)
- * 
- * @see \InertiaVolt\Laravel\VoltPageRegistry::class
+ *
+ * @see \InertiaVolt\Laravel\InertiaVoltManager::class
  */
 class InertiaVolt extends Facade
 {
@@ -20,6 +20,6 @@ class InertiaVolt extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \InertiaVolt\Laravel\VoltPageRegistry::class;
+        return \InertiaVolt\Laravel\InertiaVoltManager::class;
     }
 }

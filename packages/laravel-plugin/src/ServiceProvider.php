@@ -12,14 +12,16 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__ . '/../config/inertia-volt.php',
-            'inertia-volt'
+            'inertia-volt',
         );
+
+        $this->app->singleton(PageContext::class, PageContext::class);
     }
 
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/inertia-volt.php' => config_path('inertia-volt'),
+            __DIR__ . '/../config/inertia-volt.php' => config_path('inertia-volt'),
         ]);
     }
 }

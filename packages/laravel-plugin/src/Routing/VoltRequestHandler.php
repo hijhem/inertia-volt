@@ -12,8 +12,7 @@ class VoltRequestHandler
 {
     public function __construct(
         private PageHandlerFactory $pageHandlerFactory,
-    ) {  
-    }
+    ) {}
 
     public function handle(Request $request, string $component, Closure|string $handler)
     {
@@ -22,7 +21,7 @@ class VoltRequestHandler
         $route = $request->route();
         $parameters = $route->resolveMethodDependencies(
             $route->parametersWithoutNulls(),
-            $reflectionFunction
+            $reflectionFunction,
         );
 
         $props = $handler(...array_values($parameters));
