@@ -1056,12 +1056,21 @@
             "dist": {
                 "type": "path",
                 "url": "../../packages/laravel-plugin",
-                "reference": "1f283ced4d24a69ea4de5ca9daa01d69801eb2ac"
+                "reference": "a7bb50e807a6d3731f5aebe90ee36c70019dba4c"
             },
             "require": {
+                "illuminate/contracts": "^11.0",
                 "illuminate/http": "^11.0",
                 "illuminate/routing": "^11.0",
-                "illuminate/support": "^11.0"
+                "illuminate/support": "^11.0",
+                "illuminate/view": "^11.0",
+                "inertiajs/inertia-laravel": "^1.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.17",
+                "orchestra/testbench": "^9.4",
+                "phpstan/phpstan": "^1.12",
+                "phpunit/phpunit": "^11.3"
             },
             "type": "library",
             "extra": {
@@ -1078,6 +1087,38 @@
                 "files": [
                     "./src/actions.php",
                     "./src/helpers.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "InertiaVolt\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@clear",
+                    "@prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-skeleton --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "serve": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@build",
+                    "@php vendor/bin/testbench serve --ansi"
+                ],
+                "lint": [
+                    "@php vendor/bin/pint --ansi",
+                    "@php vendor/bin/phpstan analyse --verbose --ansi"
+                ],
+                "test": [
+                    "@php vendor/bin/phpunit"
                 ]
             },
             "license": [
@@ -7426,16 +7467,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.30.0",
+            "version": "1.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "5ceb0e384997db59f38774bf79c2a6134252c08f"
+                "reference": "51b95ec8670af41009e2b2b56873bad96682413e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/5ceb0e384997db59f38774bf79c2a6134252c08f",
-                "reference": "5ceb0e384997db59f38774bf79c2a6134252c08f",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/51b95ec8670af41009e2b2b56873bad96682413e",
+                "reference": "51b95ec8670af41009e2b2b56873bad96682413e",
                 "shasum": ""
             },
             "require": {
@@ -7467,9 +7508,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.30.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.30.1"
             },
-            "time": "2024-08-29T09:54:52+00:00"
+            "time": "2024-09-07T20:13:05+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
