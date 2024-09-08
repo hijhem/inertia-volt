@@ -8,8 +8,8 @@ if (! function_exists('resolve_inertia_component')) {
      */
     function resolve_inertia_component(array $page): string
     {
-        $pagePath = config('inertia-volt.path');
-        $extension = config('inertia-volt.extension');
+        $pagePath = config()->string('inertia-volt.path');
+        $extension = config()->string('inertia-volt.extension');
 
         return "$pagePath/{$page['component']}.$extension";
     }

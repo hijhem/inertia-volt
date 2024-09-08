@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace InertiaVolt\Laravel;
 
 use Exception;
-use Illuminate\Log\Context\Repository;
+use Illuminate\Config\Repository;
 use Illuminate\Routing\Router;
 use Illuminate\Routing\RouteRegistrar;
 use InertiaVolt\Laravel\Routing\PendingInertiaPageRegistration;
 
 class InertiaVoltManager
 {
-    protected string $pagePath;
+    protected string $lookupPath;
 
-    protected string $pageExtension;
+    protected string $lookupExtension;
 
     public function __construct(
         protected Router $router,
         protected PageContext $pageContext,
-        protected Repository $context,
+        protected Repository $config,
     ) {
-        $this->pagePath = config('inertia-volt.path', fn() => resource_path('js/Pages'));
-        $this->pageExtension = config('inertia-volt.extension', 'vue');
+        $this->lookupPath = $this->config->string('inertia-volt.path', fn() => resource_path('js/Pages'));
+        $this->lookupExtension = $this->config->string('inertia-volt.extension', 'vue');
     }
 
     public function page(string $component): PendingInertiaPageRegistration
@@ -44,9 +44,9 @@ class InertiaVoltManager
     {
         return sprintf(
             '%s/%s.inertia.%s',
-            rtrim($this->pagePath, '/'),
+            rtrim($this->lookupPath, '/'),
             $component,
-            $this->pageExtension,
+            $this->lookupExtension,
         );
     }
 }
