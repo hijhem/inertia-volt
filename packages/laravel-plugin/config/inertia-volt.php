@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'path' => 'resources/js/Pages',
+    'path' => resource_path('js/Pages'),
     'extension' => env('INERTIA_VOLT_EXTENSION', 'vue'),
 ];

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace InertiaVolt\Laravel;
 
+use Exception;
 use Illuminate\Log\Context\Repository;
 use Illuminate\Routing\Router;
 use Illuminate\Routing\RouteRegistrar;
@@ -20,8 +21,8 @@ class InertiaVoltManager
         protected PageContext $pageContext,
         protected Repository $context,
     ) {
-        $this->pagePath = config('inertia-volt.path');
-        $this->pageExtension = config('inertia-volt.extension');
+        $this->pagePath = config('inertia-volt.path', fn() => resource_path('js/Pages'));
+        $this->pageExtension = config('inertia-volt.extension', 'vue');
     }
 
     public function page(string $component): PendingInertiaPageRegistration
@@ -30,6 +31,10 @@ class InertiaVoltManager
 
         $path = $this->resolveComponentPath($component);
 
+        if (!file_exists($path)) {
+            throw new Exception("Component $component not found.");
+        }
+
         $routeRegistrar = new RouteRegistrar($this->router);
 
         return new PendingInertiaPageRegistration($this->pageContext, $routeRegistrar, $path);
@@ -37,11 +42,11 @@ class InertiaVoltManager
 
     private function resolveComponentPath(string $component): string
     {
-        return app_path(sprintf(
-            '../%s/%s.inertia.%s',
-            trim($this->pagePath, '/'),
+        return sprintf(
+            '%s/%s.inertia.%s',
+            rtrim($this->pagePath, '/'),
             $component,
             $this->pageExtension,
-        ));
+        );
     }
 }
