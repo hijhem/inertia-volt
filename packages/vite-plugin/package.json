@@ -1,0 +1,36 @@
+{
+  "name": "@inertia-volt/vite",
+  "homepage": "https://github.com/hijhem/inertia-volt",
+  "keywords": [
+    "inertiajs",
+    "inertia",
+    "vite",
+    "volt"
+  ],
+  "license": "MIT",
+  "version": "0.2.0-alpha",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.3.3",
+    "tsc": "^2.0.4",
+    "vite": "^5.4.4",
+    "vitest": "^2.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.2",
+    "vite": "^5.0.0"
+  },
+  "scripts": {
+    "test": "vitest",
+    "format": "bunx prettier --write lib/",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

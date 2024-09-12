@@ -1,0 +1,38 @@
+# Logs
+logs
+_.log
+npm-debug.log_
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Caches
+.cache
+
+
+# Runtime data
+pids
+_.pid
+_.seed
+*.pid.lock
+
+# Lock files
+bun.lockb
+package-lock.json
+
+# Dependency directories
+node_modules/
+
+
+# Optional npm cache directory
+.npm
+
+# dist folder
+dist
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store
