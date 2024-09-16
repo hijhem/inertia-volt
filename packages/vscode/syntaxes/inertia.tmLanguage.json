@@ -1,0 +1,14 @@
+{
+  "scopeName": "source.inertia",
+  "name": "Inertia Vue PHP",
+  "patterns": [
+    {
+      "include": "text.html.php#php-tag"
+    },
+    {
+      "include": "source.vue"
+    }
+  ],
+  "repository": {},
+  "fileTypes": [".inertia.vue"]
+}

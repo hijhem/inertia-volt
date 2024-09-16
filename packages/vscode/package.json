@@ -1,0 +1,33 @@
+{
+  "name": "inertia-volt",
+  "displayName": "inertia-volt",
+  "description": "Syntax Highlighting",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "inertia",
+        "aliases": ["Inertia", "inertia"],
+        "extensions": [".inertia.vue"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "inertia",
+        "scopeName": "source.inertia",
+        "path": "./syntaxes/inertia.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.php": "php",
+          "source.vue": "vue"
+        }
+      }
+    ]
+  }
+}
