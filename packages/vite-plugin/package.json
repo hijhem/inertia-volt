@@ -8,7 +8,7 @@
     "volt"
   ],
   "license": "MIT",
-  "version": "0.2.0-alpha",
+  "version": "0.3.0-alpha",
   "main": "dist/index.umd.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
